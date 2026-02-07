@@ -101,6 +101,19 @@
       font-size: clamp(30px, 4.5vw, 46px);
       margin: 10px 0;
     }
+    .love-text {
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 700;
+  margin: 6px 0 12px;
+  color: #ff3b7a;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.4s ease;
+}
+.love-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
     .fireworks {
       width: min(380px, 90vw);
       margin: 0 auto;
@@ -156,6 +169,7 @@
     <div class="hint" id="hint">Don’t you dare click the “No” button!! 😈</div>
     <section class="result" id="result">
       <h2>YAY! 🎉 I love yooooou!!</h2>
+      <p class="love-text" id="loveText">I love yooou!! 💕</p>
       <img
         class="fireworks"
         src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
@@ -244,17 +258,21 @@
     });
     noBtn.addEventListener("click", e => e.preventDefault());
     /* ---------- YES CLICK ---------- */
-    yesBtn.addEventListener("click", () => {
-      zone.style.display = "none";
-      hint.style.display = "none";     // HIDE THE HINT
-      result.style.display = "block";
-      resizeConfettiCanvas();
-      fullScreenConfetti();
-    });
+ yesBtn.addEventListener("click", () => {
+  zone.style.display = "none";
+  hint.style.display = "none";
+  result.style.display = "block";
+  setTimeout(() => {
+    document.getElementById("loveText").classList.add("show");
+  }, 300);
+  resizeConfettiCanvas();
+  fullScreenConfetti();
+});
   </script>
 </body>
 
 </html>
+
 
 
 
